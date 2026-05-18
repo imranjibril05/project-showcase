@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Projects</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<header>
+  <h2>All Projects</h2>
+
+  <div class="nav-right">
+
+    <a href="/">Home</a>
+    <a href="/create.html" id="createLink">Create</a>
+
+    <!-- PROFILE AREA -->
+    <div id="profileArea" class="profile-wrapper">
+
+      <img id="navAvatar" class="nav-avatar" onclick="toggleMenu()">
+
+      <div id="profileMenu" class="dropdown hidden">
+
+        <div id="navUserName"></div>
+
+        <a href="/profile.html">My Profile</a>
+
+        <button onclick="logout()">Logout</button>
+
+      </div>
+    </div>
+
+    <a href="/login.html" id="loginLink">Login</a>
+
+  </div>
+</header>
+
+<input id="search" placeholder="Search..." />
+<div class="categories">
+
+  <button onclick="filterCategory('all')">All</button>
+
+  <button onclick="filterCategory('Website')">Website</button>
+
+  <button onclick="filterCategory('Design')">Design</button>
+
+  <button onclick="filterCategory('Art')">Art</button>
+
+  <button onclick="filterCategory('AI/ML')">AI/ML</button>
+
+  <button onclick="filterCategory('Creative')">Creative</button>
+
+</div>
+
+<div id="projects" class="grid"></div>
+<script src="/js/utils.js"></script>
+<script src="/js/config.js"></script>
+<script src="/js/projects.js"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>

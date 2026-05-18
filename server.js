@@ -1,0 +1,34 @@
+require("dotenv").config();
+
+const express = require("express");
+const mongoose = require("mongoose");
+const cors = require("cors");
+const path = require("path");
+const connectDB = require("./config/db");
+
+const app = express();
+app.use(express.static(path.join(__dirname, "public")));
+
+// middleware
+app.use(cors());
+app.use(express.json());
+
+// routes
+app.use("/api/auth", require("./routes/authRoutes"));
+app.use("/api/projects", require("./routes/projectRoutes"));
+
+// start server ONLY after db connects
+async function start() {
+  try {
+    await connectDB();
+
+    app.listen(5000, () => {
+      console.log("Server running on port 5000");
+    });
+
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+start();

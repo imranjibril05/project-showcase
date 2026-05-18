@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Profile</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<header>
+  <h2>My Projects</h2>
+
+  <div class="profileHeader">
+  <img id="profilePicView" class="avatarLarge">
+  <h2 id="profileName"></h2>
+</div>
+  <div>
+    <a href="/">Home</a>
+    
+    <button onclick="logout()">Logout</button>
+  </div>
+</header>
+
+<div id="myProjects" class="grid"></div>
+
+<h3>Edit Project</h3>
+
+<input type="hidden" id="editId">
+<input id="editTitle" placeholder="Title">
+<textarea id="editDescription" placeholder="Description"></textarea>
+<input id="editTechnologies" placeholder="Tech">
+<div id="editImagesPreview" class="editImages"></div>
+
+
+<button onclick="updateProject()">Update</button>
+<script src="/js/utils.js"></script>
+<script src="/js/config.js"></script>
+<script src="/js/profile.js"></script>
+
+</body>
+</html>

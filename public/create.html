@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Create Project</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<a href="/">← Back</a>
+
+<h2>Create Project</h2>
+
+<input id="title" placeholder="Title">
+<select id="category">
+
+  <option value="Website">Website</option>
+
+  <option value="Design">Design</option>
+
+  <option value="Art">Art</option>
+
+  <option value="AI/ML">AI/ML</option>
+
+  <option value="Creative">Creative</option>
+
+</select>
+<textarea id="description" placeholder="Description"></textarea>
+<input id="technologies" placeholder="Tech (comma separated)">
+<input id="link" placeholder="Project link">
+
+<h3>Images (max 5)</h3>
+<div id="imageBox" class="image-grid"></div>
+
+<button onclick="addImageSlot()">+ Add Image</button>
+<button onclick="createProject()">Submit</button>
+<script src="/js/utils.js"></script>
+<script src="/js/config.js"></script>
+<script src="/js/createProject.js"></script>
+
+</body>
+</html>
