@@ -129,7 +129,7 @@ window.selectImage = function (index) {
     formData.append("description", document.getElementById("editDescription").value);
     formData.append("technologies", document.getElementById("editTechnologies").value);
 
-    const res = await fetch(API + "/projects/" + id, {
+    const res = await fetch(`${API}/projects/${id}`, {
       method: "PUT",
       headers: {
         Authorization: "Bearer " + token
@@ -164,7 +164,7 @@ window.updateProject = async function () {
   formData.append("description", document.getElementById("editDescription").value);
   formData.append("technologies", document.getElementById("editTechnologies").value);
 
-  const res = await fetch(API + "/projects/" + id, {
+  const res = await fetch(`${API}/projects/${id}`, {
     method: "PUT",
     headers: {
       Authorization: "Bearer " + token
@@ -189,7 +189,7 @@ window.deleteProject = async function (id) {
   const token = localStorage.getItem("token");
 
   try {
-    const res = await fetch(API + "/projects/" + id, {
+    const res = await fetch(`${API}/projects/${id}`, {
       method: "DELETE",
       headers: {
         Authorization: "Bearer " + token

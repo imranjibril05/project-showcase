@@ -2,12 +2,7 @@
 // SAFE GLOBAL STATE
 // ======================
 import { API } from "./config.js";
-import "./config.js";
-import "./utils.js";
-import "./auth.js";
-import "./projects.js";
-import "./toast.js";
-import "./data.js";
+
 let currentCategory = "All";
 
 
