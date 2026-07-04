@@ -1,9 +1,11 @@
+import { API } from "./config.js";
 async function getCurrentUser() {
   const token = localStorage.getItem("token");
   if (!token) return null;
 
   try {
-    const res = await fetch(API + "/auth/me", {
+    const res = await fetch(
+      `${API}/auth/me`, {
       headers: {
         Authorization: "Bearer " + token
       }
@@ -108,7 +110,7 @@ async function getCurrentUser() {
   const token = localStorage.getItem("token");
   if (!token) return null;
 
-  const res = await fetch(API + "/auth/me", {
+  const res = await fetch(`${API}/auth/me`, {
     headers: {
       Authorization: "Bearer " + token
     }

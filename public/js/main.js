@@ -1,7 +1,7 @@
 // ======================
 // SAFE GLOBAL STATE
 // ======================
-
+import { API } from "./config.js";
 let currentCategory = "All";
 
 
@@ -256,7 +256,7 @@ async function likeProjectUI(e, id, btn) {
   if (!token) return showToast("Login first", "error");
 
   try {
-    const res = await fetch(API + "/projects/" + id + "/like", {
+    const res = await fetch(`${API}/projects/${id}/like`, {
       method: "PUT",
       headers: {
         Authorization: "Bearer " + token

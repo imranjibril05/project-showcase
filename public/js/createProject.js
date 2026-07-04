@@ -1,3 +1,4 @@
+import { API } from "./config.js";
 const token = localStorage.getItem("token");
 const MAX_SIZE = 2 * 1024 * 1024; // 2MB
 
@@ -106,7 +107,7 @@ window.replaceImage = function(index) {
 
     images.forEach(img => formData.append("images", img));
 
-    const res = await fetch(API + "/projects", {
+    const res = await fetch(`${API}/projects`, {
       method: "POST",
       headers: {
         Authorization: "Bearer " + token

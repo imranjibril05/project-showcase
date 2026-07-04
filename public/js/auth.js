@@ -1,4 +1,4 @@
-const API_URL = API + "/api/auth";
+import { API } from "./config.js";
 const GOOGLE_CLIENT_ID = "569048598863-jp2rtuf68ujtm4pgkaejt9f77gir2ums.apps.googleusercontent.com";
 
 // ======================
@@ -53,7 +53,7 @@ async function register() {
       formData.append("profilePic", profilePicInput.files[0]);
     }
 
-    const res = await fetch(API_URL + "/register", {
+    const res = await fetch(`${API}/auth/register`, {
       method: "POST",
       body: formData
     });
@@ -90,7 +90,7 @@ async function login() {
       return showToast("Please enter email and password.", "error");
     }
 
-    const res = await fetch(API_URL + "/login", {
+    const res = await fetch(`${API}/auth/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -169,7 +169,7 @@ async function handleGoogleLogin(response) {
 
   try {
 
-    const res = await fetch(`${API_URL}/google-login`, {
+    const res = await fetch(`${API}/auth/google-login`, {
 
       method: "POST",
 

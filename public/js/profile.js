@@ -1,3 +1,4 @@
+import { API } from "./config.js";
 const token = localStorage.getItem("token");
 
 if (!token) {
@@ -46,7 +47,7 @@ function getImageUrl(img) {
 async function loadMyProjects() {
   const userId = getUserIdFromToken();
 
-  const res = await fetch(API + "/projects/user/" + userId);
+  const res = await fetch(`${API}/projects/user/${userId}`);
   const projects = await res.json();
 
   const container = document.getElementById("myProjects");

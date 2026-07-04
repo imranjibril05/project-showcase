@@ -1,3 +1,4 @@
+import { API } from "./config.js";
 const id = new URLSearchParams(window.location.search).get("id");
 let currentImages = [];
 let currentIndex = 0;
@@ -9,7 +10,7 @@ function getUserId() {
 }
 
 async function loadProject() {
-  const res = await fetch(API + "/projects/" + id);
+  const res = await fetch(`${API}/projects/${id}`);
   const p = await res.json();
 document.getElementById("project").innerHTML = `
 
@@ -102,7 +103,7 @@ async function likeProjectUI(e, id, btn) {
 
   try {
 
-    const res = await fetch(API + "/projects/" + id + "/like", {
+    const res = await fetch(`${API}/projects/${id}/like`, {
       method: "PUT",
       headers: {
         Authorization: "Bearer " + token
@@ -177,7 +178,7 @@ async function addComment() {
     return;
   }
 
-  const res = await fetch(API + "/projects/" + id + "/comment", {
+  const res = await fetch(`${API}/projects/${id}/comment`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -198,7 +199,7 @@ async function addComment() {
 }
 
 async function deleteComment(commentId) {
-  await fetch(API + "/projects/" + id + "/comment/" + commentId, {
+  await fetch(`${API}/projects/${id}/comment/${commentId}`, {
     method: "DELETE",
     headers: {
       Authorization: "Bearer " + localStorage.getItem("token")
@@ -212,7 +213,7 @@ async function editComment(commentId, oldText) {
   const newText = prompt("Edit:", oldText);
   if (!newText) return;
 
-  await fetch(API + "/projects/" + id + "/comment/" + commentId, {
+  await fetch(`${API}/projects/${id}/comment/${commentId}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",

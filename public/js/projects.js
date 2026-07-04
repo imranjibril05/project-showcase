@@ -1,4 +1,4 @@
-const BASE_URL = "https://project-showcase-fi39.onrender.com";
+import { API } from "./config.js";
 (function () {
 
   if (window.location.pathname.includes("user.html")) {
@@ -55,8 +55,8 @@ const BASE_URL = "https://project-showcase-fi39.onrender.com";
         window.location.pathname.includes("index.html");
 
       const url = isHomePage
-        ? `${BASE_URL}/projects?page=1&limit=6`
-        : `${BASE_URL}/projects?page=${page}`;
+        ? `${API}/projects?page=1&limit=6`
+        : `${API}/projects?page=${page}`;
 
       const res = await fetch(url);
       const projects = await res.json();
@@ -174,7 +174,7 @@ const BASE_URL = "https://project-showcase-fi39.onrender.com";
  function getImageUrl(img) {
   if (!img) return "";
   if (typeof img === "string" && img.startsWith("http")) return img;
-  return `${BASE_URL}/uploads/${img}`;
+  return `${API}/uploads/${img}`;
 }
 
   // ======================
@@ -186,7 +186,7 @@ const BASE_URL = "https://project-showcase-fi39.onrender.com";
     const token = localStorage.getItem("token");
 
     try {
-      const res = await fetch(`${BASE_URL}/projects/${id}`, {
+      const res = await fetch(`${API}/projects/${id}`, {
         method: "DELETE",
         headers: {
           Authorization: "Bearer " + token
@@ -266,7 +266,7 @@ const BASE_URL = "https://project-showcase-fi39.onrender.com";
   }
 
   // FILTERED FETCH (IMPORTANT)
-  fetch(`${BASE_URL}/projects/category?category=${category}`)
+  fetch(`${API}/projects/category?category=${category}`)
     .then(res => res.json())
     .then(data => {
       displayProjects(data, false);

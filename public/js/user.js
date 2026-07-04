@@ -1,4 +1,4 @@
-const BASE_URL = "https://project-showcase-fi39.onrender.com";
+import { API } from "./config.js";
 const userId = new URLSearchParams(window.location.search).get("id");
 
 if (!userId) {
@@ -13,7 +13,7 @@ loadUserProjects();
 // ======================
 async function loadUserProjects() {
   try {
-    const res = await fetch(`${BASE_URL}/projects/user/${userId}`);
+    const res = await fetch(`${API}/projects/user/${userId}`);
     const projects = await res.json();
 
     renderProjects(projects);
