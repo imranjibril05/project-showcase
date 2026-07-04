@@ -30,11 +30,13 @@ export const likeProject = (id) =>
 export const getComments = (id, page = 1) =>
   request(`/projects/${id}/comments?page=${page}`);
 
+
 export const addComment = (id, text) =>
   request(`/projects/${id}/comment`, {
     method: "POST",
     body: JSON.stringify({ text })
   });
+
 
 export const deleteComment = (id, commentId) =>
   request(`/projects/${id}/comment/${commentId}`, {

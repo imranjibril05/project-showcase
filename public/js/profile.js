@@ -138,9 +138,9 @@ window.selectImage = function (index) {
 
     const data = await res.json();
 
-    if (!res.ok) return alert(data.message);
+    if (!res.ok) return showToast(data.message);
 
-    alert("Image updated");
+        showToast("Image updated");
 
     fillEdit(id);
     loadMyProjects();
@@ -155,7 +155,7 @@ window.selectImage = function (index) {
 window.updateProject = async function () {
   const id = document.getElementById("editId").value;
 
-  if (!id) return alert("Select project first");
+  if (!id) return showToast("Select project first");
 
   const formData = new FormData();
 
@@ -173,9 +173,9 @@ window.updateProject = async function () {
 
   const data = await res.json();
 
-  if (!res.ok) return alert(data.message);
+  if (!res.ok) return showToast(data.message, "error");
 
-  alert("Updated");
+     showToast("Updated");
   loadMyProjects();
 };
 
@@ -198,14 +198,14 @@ window.deleteProject = async function (id) {
     const data = await res.json();
 
     if (!res.ok) {
-      return alert(data.message || "Failed to delete");
+      return showToast(data.message || "Failed to delete", "error");
     }
 
     loadMyProjects();
 
   } catch (err) {
     console.error(err);
-    alert("Something went wrong");
+    showToast("Something went wrong", "error");
   }
 };
 
@@ -224,6 +224,15 @@ document.addEventListener("DOMContentLoaded", async () => {
     name.innerText = user?.name || "User";
   }
 });
+
+
+
+
+
+
+
+
+
 
 // ======================
 // INIT

@@ -1,5 +1,4 @@
 const jwt = require("jsonwebtoken");
-
 module.exports = (req, res, next) => {
   try {
 
@@ -10,7 +9,6 @@ module.exports = (req, res, next) => {
         message: "No token"
       });
     }
-
     const decoded = jwt.verify(
       token,
       process.env.JWT_SECRET
@@ -28,6 +26,5 @@ module.exports = (req, res, next) => {
     res.status(401).json({
       message: "Invalid token"
     });
-
   }
 };

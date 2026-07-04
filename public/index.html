@@ -1,61 +1,927 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Projects</title>
-  <link rel="stylesheet" href="/css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SMUHUB | Student Showcase</title>
+<!-- YOUR EXISTING CSS PATH -->
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
+
 <body>
 
-<header>
-  <h2>All Projects</h2>
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+    <div class="container">
 
-  <div class="nav-right">
+        <div class="nav-inner">
 
-    <a href="/">Home</a>
-    <a href="/create.html" id="createLink">Create</a>
+            <a href="/" class="logo">
+                Origin.<span></span>
+            </a>
 
-    <!-- PROFILE AREA -->
-    <div id="profileArea" class="profile-wrapper">
+            <div class="nav-links">
 
-      <img id="navAvatar" class="nav-avatar" onclick="toggleMenu()">
+                <a href="#showcase" class="nav-link">Showcase</a>
+                <a href="#clubs" class="nav-link">Clubs</a>
+                <a href="#events" class="nav-link">Events</a>
+                <a href="#members" class="nav-link">Innovators</a>
 
-      <div id="profileMenu" class="dropdown hidden">
+                <!-- KEEPING OLD ID -->
+                <a href="/create.html" id="createLink" class="nav-link">
+                    Create
+                </a>
 
-        <div id="navUserName"></div>
+            </div>
 
-        <a href="/profile.html">My Profile</a>
+            <!-- MOBILE MENU -->
+            <button class="menu-toggle" id="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+       
 
-        <button onclick="logout()">Logout</button>
+            <!-- PROFILE AREA -->
+            <div id="profileArea" class="user-profile">
 
+                <!-- KEEPING OLD ID -->
+                <div class="profile-trigger">
+
+                    <img
+                        id="navAvatar"
+                        class="nav-avatar"
+                        onclick="toggleMenu()"
+                        src="/images/default-avatar.png"
+                        alt="Profile"
+                    >
+
+                </div>
+
+                <!-- KEEPING OLD ID -->
+                <div id="profileMenu" class="profile-dropdown glass hidden">
+
+                    <!-- KEEPING OLD ID -->
+                    <div class="dropdown-header">
+
+                        <div id="navUserName"></div>
+
+                    </div>
+
+                    <div class="dropdown-divider"></div>
+
+                    <a href="/profile.html" class="dropdown-item">
+                        My Profile
+                    </a>
+
+                    <button onclick="logout()" class="dropdown-item logout">
+                        Logout
+                    </button>
+
+                </div>
+            </div>
+
+            <!-- KEEPING OLD ID -->
+            <div class="nav-auth" id="navAuth">
+
+    <button class="nav-login-btn" onclick="openLoginModal()">
+   
+</button>
+<div id="googleLoginBtn">
+   
+</div>
+
+<!--<button class="nav-register-btn" onclick="openRegisterModal()">
+    Register
+</button>-->
+</div>
+
+        </div>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+
+    <div class="hero-glow"></div>
+
+    <div class="container">
+
+        <div class="hero-content">
+
+            <div class="badge ">
+                Innovation Ecosystem
+            </div>
+
+            <h1 class="reveal">
+                IDEAS THAT <br>
+                <span class="gradient-text">SHAPE TOMORROW.</span>
+            </h1>
+
+            <p class="reveal ">
+                A place for builders across Ethiopia to showcase projects, find collaborators, and turn ideas into reality.
+            </p>
+
+            <div class="hero-actions">
+
+                <a href="#showcase" class="btn btn-primary">
+                    Explore Works
+                </a>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+
+
+<section id="what-we-do">
+
+  <div class="container">
+
+    <div class="section-header reveal">
+      <span class="section-tag">Platform</span>
+
+      <h2>
+        WHY THIS 
+        <span style="color: var(--text-muted)">EXISTS.</span>
+      </h2>
+    </div>
+
+    <div class="what-grid">
+
+      <div class="what-card">
+        <h3>Create Projects</h3>
+        <p>
+          Build and showcase your ideas. Every project you create lives on your profile — forever.
+        </p>
+      </div>
+
+      <div class="what-card">
+        <h3>Contribute & Build</h3>
+        <p>
+          Students can contribute new features, improve the platform, and shape how it evolves.
+        </p>
+      </div>
+
+      <div class="what-card">
+        <h3>Grow Your Legacy</h3>
+        <p>
+          Your work stays with you even after graduation — your ideas remain part of the ecosystem.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- SHOWCASE -->
+<section id="showcase">
+
+    <div class="container">
+
+        <div class="section-header reveal">
+
+            <span class="section-tag">Build Something That Stays</span>
+
+            <h2>
+                LATEST
+                <span style="color: var(--text-muted)">
+                    SHOWCASES.
+                </span>
+            </h2>
+
+        </div>
+
+        <!-- SEARCH -->
+       
+
+        <!-- CATEGORY FILTER -->
+        <div class="category-filter-wrapper reveal">
+
+            <div class="category-filter categories">
+
+                <button onclick="filterCategory('all',this)" class="filter-btn active">
+                    All
+                </button>
+
+                <button onclick="filterCategory('Website',this)" class="filter-btn">
+                    Website
+                </button>
+
+                <button onclick="filterCategory('Design',this)" class="filter-btn">
+                    Design
+                </button>
+
+                <button onclick="filterCategory('Art',this)" class="filter-btn">
+                    Art
+                </button>
+
+                <button onclick="filterCategory('AI',this)" class="filter-btn">
+                    AI/ML
+                </button>
+
+                <button onclick="filterCategory('Creative',this)" class="filter-btn">
+                    Creative
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- KEEPING OLD ID -->
+        <div id="projects" class="project-grid grid">
+
+            <!-- JS injects projects here -->
+
+        </div>
+                      <div class="see-more-container">
+  <button class="see-more-btn" onclick="goToAllProjects()">
+    See More Projects 
+  </button>
+</div>
+    </div>
+</section>
+
+
+
+ <!-- Copy-pasteable section starts here -->
+    <section class="origin-build-impossible" id="origin-build-scroll-container">
+      
+      <!-- Sticky Viewport View -->
+      <div class="origin-build-viewport" id="origin-build-viewport-canvas">
+        
+        <!-- Left Side Ambient Glow (from Bold Typography design) -->
+        <div class="origin-build-ambient-glow"></div>
+
+        <!-- Ambient Mouse Tracking Light -->
+        <div class="origin-build-mouse-glow" id="origin-build-mouse-glow"></div>
+
+        <!-- Cinematic Header Top-Bar -->
+        <header class="origin-build-header">
+          <div class="origin-build-header-logo">
+            <span>ORIGIN</span>
+            <span class="origin-build-logo-dot"></span>
+          </div>
+          
+          <div class="origin-build-header-meta">
+            <div class="origin-build-header-line"></div>
+            <div class="origin-build-header-pages">01 &mdash; 03</div>
+          </div>
+        </header>
+
+        <!-- PANEL 1: THE CHALLENGE -->
+        <div id="origin-build-panel-one" class="origin-build-panel">
+          <div class="origin-build-max-container">
+            <div class="origin-build-p1-title">
+              <span id="origin-build-p1-build" class="origin-build-p1-word">BUILD</span>
+              <span id="origin-build-p1-the" class="origin-build-p1-word">THE</span>
+              <span id="origin-build-p1-impossible" class="origin-build-p1-word origin-build-p1-word-gradient">IMPOSSIBLE</span>
+            </div>
+
+            <div id="origin-build-p1-subtext" class="origin-build-subtext-container">
+              <div class="origin-build-divider-line"></div>
+              <div class="origin-build-p1-paragraph">
+                The internet changed how we learn.
+                <span class="origin-build-white-bold">AI changed how we build.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PANEL 2: THE SHIFT -->
+        <div id="origin-build-panel-two" class="origin-build-panel">
+          <div class="origin-build-max-container">
+            <div class="origin-build-p2-timeline-track">
+              <div id="origin-build-p2-s1" class="origin-build-p2-statement">Every tool you need already exists.</div>
+              <div id="origin-build-p2-s2" class="origin-build-p2-statement">Knowledge is everywhere.</div>
+              <div id="origin-build-p2-s3" class="origin-build-p2-statement">AI removes barriers.</div>
+              <div id="origin-build-p2-s4" class="origin-build-p2-statement">Ideas become products.</div>
+              <div id="origin-build-p2-s5" class="origin-build-p2-statement origin-build-p2-statement-gradient">
+                One person can build what once required entire companies.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PANEL 3: THE REALITY -->
+        <div id="origin-build-panel-three" class="origin-build-panel">
+          <div class="origin-build-max-container">
+            <div id="origin-build-p3-text1" class="origin-build-p3-statement">
+              Every project that changed the world was impossible until someone decided to build it.
+            </div>
+
+            <div id="origin-build-p3-text2" class="origin-build-p3-question">
+              Why shouldn’t the next one be yours?
+            </div>
+
+            <!-- Minimalist Origin Wordmark & Solid Dot Logo -->
+            <div id="origin-build-p3-logo" class="origin-build-p3-branding">
+              <div class="origin-build-divider-line"></div>
+              
+              <div class="origin-build-p3-origin-row">
+                <span class="origin-build-p3-origin-text">ORIGIN</span>
+                <span class="origin-build-p3-dot"></span>
+              </div>
+              <span class="origin-build-p3-tagline">The Era of Builders</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Top Micro Progress Bar -->
+        <div class="origin-build-progress-bar-container">
+          <div id="origin-build-top-progress-bar"></div>
+        </div>
+
+        <!-- Right Indicators Navigation -->
+        <div class="origin-build-right-dots-nav">
+          <button id="origin-build-dot-btn-0" class="origin-build-dot-button origin-build-active">
+            <span class="origin-build-dot-label">THE CHALLENGE</span>
+            <div class="origin-build-dot-container">
+              <span class="origin-build-dot-num">01</span>
+              <div class="origin-build-dot-circle"></div>
+            </div>
+          </button>
+          <button id="origin-build-dot-btn-1" class="origin-build-dot-button">
+            <span class="origin-build-dot-label">THE SHIFT</span>
+            <div class="origin-build-dot-container">
+              <span class="origin-build-dot-num">02</span>
+              <div class="origin-build-dot-circle"></div>
+            </div>
+          </button>
+          <button id="origin-build-dot-btn-2" class="origin-build-dot-button">
+            <span class="origin-build-dot-label">THE REALITY</span>
+            <div class="origin-build-dot-container">
+              <span class="origin-build-dot-num">03</span>
+              <div class="origin-build-dot-circle"></div>
+            </div>
+          </button>
+        </div>
+
+        <!-- Scroll down prompt -->
+        <div id="origin-build-scroll-down-prompt" class="origin-build-scroll-down-prompt">
+          <span class="origin-build-scroll-prompt-text">Scroll to explore</span>
+          <div class="origin-build-scroll-mouse-frame">
+            <div id="origin-build-scroll-mouse-wheel" class="origin-build-scroll-mouse-wheel"></div>
+          </div>
+        </div>
+
+        <!-- Elegant Interactive Footer -->
+        <footer class="origin-build-footer">
+          <div class="origin-build-footer-phases">
+            <div id="origin-build-phase-01-indicator" class="origin-build-phase-indicator origin-build-active">
+              <span class="origin-build-phase-tag">Phase 01</span>
+              <span class="origin-build-phase-title">Conception</span>
+            </div>
+            <div id="origin-build-phase-02-indicator" class="origin-build-phase-indicator">
+              <span class="origin-build-phase-tag">Phase 02</span>
+              <span class="origin-build-phase-title">Execution</span>
+            </div>
+            <div id="origin-build-phase-03-indicator" class="origin-build-phase-indicator">
+              <span class="origin-build-phase-tag">Phase 03</span>
+              <span class="origin-build-phase-title">Evolution</span>
+            </div>
+          </div>
+
+          <div class="origin-build-footer-scroll-cta">
+            <div class="origin-build-pulse-circle-container">
+              <div class="origin-build-pulse-dot"></div>
+            </div>
+            <span id="origin-build-footer-begin-scrolling" class="origin-build-begin-scroll-tag">
+              Begin Scrolling
+            </span>
+          </div>
+        </footer>
+
+      </div>
+    </section>
+
+
+
+
+    <section class="origin-milestone-section">
+  <div class="origin-milestone-glow"></div>
+  <div class="origin-milestone-container">
+    
+    <!-- Section Header -->
+    <div class="origin-milestone-header">
+      <div class="origin-milestone-badge">Origin Roadmap</div>
+      <h2 class="origin-milestone-main-title">Coming Soon</h2>
+      <p class="origin-milestone-subtitle">Explore the future milestone releases of the Origin platform. Built by and for modern creators.</p>
+    </div>
+
+    <!-- Timeline Wrapper -->
+    <div class="origin-milestone-timeline">
+      <!-- The vertical progress line -->
+      <div class="origin-milestone-progress-line">
+        <div class="origin-milestone-progress-fill"></div>
+      </div>
+
+      <!-- Milestone Items -->
+      
+      <!-- Item 1 -->
+      <div class="origin-milestone-item" data-index="1">
+        <div class="origin-milestone-node">
+          <div class="origin-milestone-circle">1</div>
+        </div>
+        <div class="origin-milestone-content">
+          <h3 class="origin-milestone-title">
+            <span class="origin-milestone-emoji"></span>
+            Profile Customization
+          </h3>
+          <p class="origin-milestone-desc">Build your identity inside Origin</p>
+        </div>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="origin-milestone-item" data-index="2">
+        <div class="origin-milestone-node">
+          <div class="origin-milestone-circle">2</div>
+        </div>
+        <div class="origin-milestone-content">
+          <h3 class="origin-milestone-title">
+            <span class="origin-milestone-emoji"></span>
+            Builder Reputation
+          </h3>
+          <p class="origin-milestone-desc">Earn badges through contributions and projects</p>
+        </div>
+      </div>
+
+      <!-- Item 3 -->
+      <div class="origin-milestone-item" data-index="3">
+        <div class="origin-milestone-node">
+          <div class="origin-milestone-circle">3</div>
+        </div>
+        <div class="origin-milestone-content">
+          <h3 class="origin-milestone-title">
+            <span class="origin-milestone-emoji"></span>
+            Community Collaboration
+          </h3>
+          <p class="origin-milestone-desc">Work with other builders on real ideas</p>
+        </div>
+      </div>
+
+      <!-- Item 4 -->
+      <div class="origin-milestone-item" data-index="4">
+        <div class="origin-milestone-node">
+          <div class="origin-milestone-circle">4</div>
+        </div>
+        <div class="origin-milestone-content">
+          <h3 class="origin-milestone-title">
+            <span class="origin-milestone-emoji"></span>
+            Open Project System
+          </h3>
+          <p class="origin-milestone-desc">Like GitHub-style contributions for community projects</p>
+        </div>
+      </div>
+
+      <!-- Item 5 -->
+      <div class="origin-milestone-item" data-index="5">
+        <div class="origin-milestone-node">
+          <div class="origin-milestone-circle">5</div>
+        </div>
+        <div class="origin-milestone-content">
+          <h3 class="origin-milestone-title">
+            <span class="origin-milestone-emoji"></span>
+            Feature Voting
+          </h3>
+          <p class="origin-milestone-desc">Users suggest and vote on future features</p>
+        </div>
+      </div>
+
+      <!-- Item 6 -->
+      <div class="origin-milestone-item" data-index="6">
+        <div class="origin-milestone-node">
+          <div class="origin-milestone-circle">6</div>
+        </div>
+        <div class="origin-milestone-content">
+          <h3 class="origin-milestone-title">
+            <span class="origin-milestone-emoji"></span>
+            AI Builder Tools
+          </h3>
+          <p class="origin-milestone-desc">AI-powered tools to help create projects faster</p>
+        </div>
+      </div>
+
+      <!-- Item 7 -->
+      <div class="origin-milestone-item" data-index="7">
+        <div class="origin-milestone-node">
+          <div class="origin-milestone-circle">7</div>
+        </div>
+        <div class="origin-milestone-content">
+          <h3 class="origin-milestone-title">
+            <span class="origin-milestone-emoji"></span>
+            Build in Public
+          </h3>
+          <p class="origin-milestone-desc">Track and share your progress over time</p>
+        </div>
+      </div>
+
+      <!-- Item 8 -->
+      <div class="origin-milestone-item" data-index="8">
+        <div class="origin-milestone-node">
+          <div class="origin-milestone-circle">8</div>
+        </div>
+        <div class="origin-milestone-content">
+          <h3 class="origin-milestone-title">
+            <span class="origin-milestone-emoji"></span>
+            Community Contributions
+          </h3>
+          <p class="origin-milestone-desc">Contribute code, ideas, and improvements get credited</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- MEMBERS -->
+<section id="members">
+
+    <div class="container">
+
+        <div class="section-header reveal">
+
+            <span class="section-tag">
+                Community
+            </span>
+
+            <h2>
+                FOUNDING 
+                <span style="color: var(--text-muted)">
+                    CONTRIBUTORS.
+                </span>
+            </h2>
+
+        </div>
+
+                      <p class="contributors-note">
+              The first contributors shaping this platform will appear here.
+            </p>
+
+
+    </div>
+</section>
+
+<!-- FOOTER -->
+<!-- ==========================================================================
+     ORIGIN PREMIUM FOOTER - HTML
+     ========================================================================== -->
+<footer class="origin-footer-wrapper origin-footer-animate-in" id="origin-footer">
+  
+  <!-- Giant Background Watermark (Behind all elements) -->
+  <div class="origin-footer-watermark">ORIGIN</div>
+
+  <div class="origin-footer-container">
+    
+    <!-- Top CTA Row -->
+    <div class="origin-footer-cta origin-footer-animate-in">
+      <!-- Decorative premium flare line -->
+      <div class="origin-footer-top-line"></div>
+      <div class="origin-footer-top-flare"></div>
+      
+      <div class="origin-footer-cta-left">
+        <div class="origin-footer-spark-circle">
+          <svg class="origin-footer-spark-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2c0 0 .5 5.5 1 6s6 1 6 1s-5.5.5-6 1s-1 6-1 6s-.5-5.5-1-6s-6-1-6-1s5.5-.5 6-1s1-6 1-6z"/>
+          </svg>
+        </div>
+        <div class="origin-footer-cta-text">
+          <h3>Want to be part of Origin?</h3>
+          <p>Join our community of innovators and help shape the future.</p>
+        </div>
+      </div>
+      
+      <div class="origin-footer-cta-right">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfINE5zY5fZyFXmaipdHlMEdTsfQMtLoqGkD4laGtuuxIKV9A/viewform?usp=publish-editor" target="_blank" class="origin-footer-btn" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 14px; height: 14px; display: inline-block; margin-right: 4px; vertical-align: -2px;">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <line x1="10" y1="14" x2="21" y2="3"></line>
+          </svg>
+          Apply as Contributor
+        </a>
+        <span class="origin-footer-btn-sub">Opens Google Form ↗</span>
       </div>
     </div>
 
-    <a href="/login.html" id="loginLink">Login</a>
+    <!-- Main Links Column Grid -->
+    <div class="origin-footer-grid">
+      
+      <!-- Brand Profile Column -->
+      <div class="origin-footer-brand-col origin-footer-animate-in">
+        <div class="origin-footer-logo-container">
+          <a href="#" class="origin-footer-logo">Origin.</a>
+          <span class="origin-footer-logo-spark">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2c0 0 .5 5.5 1 6s6 1 6 1s-5.5.5-6 1s-1 6-1 6s-.5-5.5-1-6s-6-1-6-1s5.5-.5 6-1s1-6 1-6z"/>
+            </svg>
+          </span>
+        </div>
+        <p class="origin-footer-brand-text">
+          Every great project has an Origin.<br><br>
+          Origin is Ethiopia's open showcase for student and club projects.<br><br>
+          <strong>Build. Share. Inspire.</strong>
+        </p>
+        <div class="origin-footer-socials">
+          <a href="https://t.me/origin_et" class="origin-footer-social-icon" aria-label="Telegram" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.12.02-1.96 1.24-5.54 3.65-.52.36-.97.53-1.34.52-.41-.01-1.2-.23-1.79-.42-.72-.24-1.29-.36-1.24-.76.03-.21.32-.42.87-.64 3.4-1.48 5.66-2.46 6.79-2.93 3.23-1.35 3.9-1.59 4.34-1.59.1 0 .31.02.45.14.12.1.15.24.16.34z"/>
+            </svg>
+          </a>
+          <a href="https://instagram.com/origin_et" class="origin-footer-social-icon" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+          </a>
+          <a href="https://linkedin.com/company/origin_et" class="origin-footer-social-icon" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+              <rect x="2" y="9" width="4" height="12"></rect>
+              <circle cx="4" cy="4" r="2"></circle>
+            </svg>
+          </a>
+          <a href="https://github.com/origin_et" class="origin-footer-social-icon" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.
+            </svg>
+          </a>
+          <a href="https://linkedin.com/company/BuildWithOrigin" class="origin-footer-social-icon" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+              <rect x="2" y="9" width="4" height="12"></rect>
+              <circle cx="4" cy="4" r="2"></circle>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Column 3 (Community) -->
+      <div class="origin-footer-col origin-footer-animate-in">
+        <span class="origin-footer-col-title">Community</span>
+        <ul class="origin-footer-links">
+          <li class="origin-footer-link-item"><a href="https://t.me/BuildWithOrigin" target="_blank" rel="noopener noreferrer">Join Telegram</a></li>
+          <li class="origin-footer-link-item"><a href="#">Discord <span class="origin-footer-link-tag">Soon</span></a></li>
+          <li class="origin-footer-link-item"><a href="#">Report a Bug</a></li>
+          <li class="origin-footer-link-item"><a href="#">Suggest a Feature</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 4 (Contact) -->
+      <div class="origin-footer-col origin-footer-animate-in">
+        <span class="origin-footer-col-title">Contact</span>
+        <ul class="origin-footer-links">
+          <li class="origin-footer-link-item"><a href="mailto:hello@origin.et">hello@origin.et</a></li>
+          <li class="origin-footer-link-item"><a href="https://t.me/BuildWithOrigin" target="_blank" rel="noopener noreferrer">Telegram</a></li>
+          <li class="origin-footer-link-item"><a href="https://instagram.com/BuildWithOrigin" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+          <li class="origin-footer-link-item"><a href="https://linkedin.com/company/BuildWithOrigin" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+          <li class="origin-footer-link-item"><a href="https://github.com/BuildWithOrigin" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 5 (Legal) -->
+      <div class="origin-footer-col origin-footer-animate-in">
+        <span class="origin-footer-col-title">Legal</span>
+        <ul class="origin-footer-links">
+          <li class="origin-footer-link-item"><a href="#">Privacy Policy</a></li>
+          <li class="origin-footer-link-item"><a href="#">Terms of Service</a></li>
+          <li class="origin-footer-link-item"><a href="#">Community Guidelines</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="origin-footer-bottom origin-footer-animate-in">
+      <div class="origin-footer-bottom-left">
+        &copy; 2026 Origin. All rights reserved.
+      </div>
+      <div class="origin-footer-bottom-center">
+        Made with passion in Ethiopia 🇪🇹
+      </div>
+      <div class="origin-footer-bottom-right">
+        v1.0.0
+      </div>
+    </div>
 
   </div>
-</header>
+</footer>
 
-<input id="search" placeholder="Search..." />
-<div class="categories">
 
-  <button onclick="filterCategory('all')">All</button>
 
-  <button onclick="filterCategory('Website')">Website</button>
+<!-- LOGIN MODAL-->
 
-  <button onclick="filterCategory('Design')">Design</button>
+<!--<div class="auth-modal" id="loginModal">
 
-  <button onclick="filterCategory('Art')">Art</button>
+  <div class="auth-box">
 
-  <button onclick="filterCategory('AI/ML')">AI/ML</button>
+    <button
+      class="close-auth"
+      onclick="closeAuthModals()"
+    >
+      ×
+    </button>
 
-  <button onclick="filterCategory('Creative')">Creative</button>
+    <h2>Welcome Back</h2>
+
+    <input
+      id="loginEmail"
+      placeholder="Email"
+    >
+
+    <input
+      id="loginPassword"
+      type="password"
+      placeholder="Password"
+    >  
+
+     <hr>
+<div id="googleButtonLogin"></div>
+
+    <button onclick="login()">
+      Login
+    </button>
+
+  </div>
+
+</div> -->
+
+<!-- REGISTER MODAL -->
+
+<!--
+<div class="auth-modal" id="registerModal">
+
+  <div class="auth-box">
+
+    <button
+      class="close-auth"
+      onclick="closeAuthModals()"
+    >
+      ×
+    </button>
+
+    <h2>Create Account</h2>
+
+  <input
+      id="registerName"
+      placeholder="Name"
+    >
+
+    <input
+      id="registerEmail"
+      placeholder="Email"
+    >
+
+    <input
+      id="registerPassword"
+      type="password"
+      placeholder="Password"
+    >
+    
+    <div class="divider">
+  <span>OR</span>
+</div>
+-->  
+  <!--<div class="profile-upload" onclick="document.getElementById('registerProfilePic').click()">
+
+  <img id="profilePreview" src="https://i.imgur.com/HeIi0wU.png" />
+
+  <div class="overlay">
+    📷
+  </div>
 
 </div>
 
-<div id="projects" class="grid"></div>
+<input
+  type="file"
+  id="registerProfilePic"
+  class="hidden-file-input"
+  accept="image/*"
+  hidden
+/>
+    -->  
+
+
+
+
+  <!--<button type="button" onclick="register()">
+      Create Account
+    </button> 
+    
+
+  </div> -->
+  
+
+</div>
+
+
+
+
+<!-- YOUR EXISTING JS FILES -->
+ <script src="https://accounts.google.com/gsi/client" async defer></script>
+ <script src="/js/data.js"></script>
 <script src="/js/utils.js"></script>
 <script src="/js/config.js"></script>
+<script src="/js/auth.js"></script>
 <script src="/js/projects.js"></script>
 <script src="/js/main.js"></script>
+<script type="module" src="/js/gsmain.js"></script>
+<script src="/js/road.js"></script>
+<script src="/js/origin-footer.js"></script> 
+
+<script src="/js/toast.js"></script>
+<div id="toast-container"></div>
 </body>
 </html>

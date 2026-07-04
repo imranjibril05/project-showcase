@@ -2,8 +2,18 @@ const mongoose = require("mongoose");
 
 const UserSchema = new mongoose.Schema({
   name: { type: String, required: true, trim: true },
-  email: { type: String, required: true, unique: true, lowercase: true, index: true },
-  password: { type: String, required: true },
+  
+  email: { type: String,
+     required: true,
+      unique: true,
+       lowercase: true,
+        index: true ,
+         match: [/^\S+@\S+\.\S+$/,
+           "Please enter a valid email"]},
+
+
+  password: { type: String,
+     required: true },
 
   profilePic: {
     type: String,
@@ -15,6 +25,8 @@ const UserSchema = new mongoose.Schema({
     enum: ["user", "admin"],
     default: "user"
   }
+
+  
 
 }, { timestamps: true });
 

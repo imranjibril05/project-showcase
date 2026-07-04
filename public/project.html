@@ -3,23 +3,49 @@
 <head>
   <title>Project</title>
   <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 
-<a href="/">← Back</a>
-<img id="navAvatar" class="nav-avatar">
-<div id="project"></div>
+<div class="project-page">
 
-<h3>Comments</h3>
+  <a href="/" class="back-btn">← Back</a>
 
-<textarea id="commentText" placeholder="Write comment..."></textarea>
-<button onclick="addComment()">Post</button>
+  <div id="project"></div>
+  <div class="white-line"></div>
+  <h3 >Comments</h3>
 
-<div id="comments"></div>
+ <div class="comment-input-wrapper">
+  <textarea id="commentText" placeholder="Add a comment..."></textarea>
+  <button onclick="addComment()">Post</button>
+  <div class="comment-line"></div>
+</div>
+  
+
+  
+
+  <div id="comments"></div>
+
+ 
+</div>
+
+
+<div id="imageViewer" class="image-viewer hidden">
+  <button class="close-viewer" onclick="closeViewer()">×</button>
+
+  <button class="nav left" onclick="prevImage()">‹</button>
+
+  <img id="viewerImg" />
+
+  <button class="nav right" onclick="nextImage()">›</button>
+</div>
+
+  
 <script src="/js/utils.js"></script>
 <script src="/js/config.js"></script>
 <script src="/js/projectDetails.js"></script>
-
+<script src="/js/toast.js"></script>
+<div id="toast-container"></div>
 
 </body>
 </html>

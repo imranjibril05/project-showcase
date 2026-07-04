@@ -6,20 +6,25 @@ const c = require("../controllers/projectController");
 // GET all projects
 router.get("/", c.getProjects);
 
-router.get(
-  "/category/:category",
-  c.getProjectsByCategory
-);
+
+//category
+router.get("/category/:category", c.getProjectsByCategory);
+router.get("/category", c.getProjectsByCategory);
+
+//search
+router.get("/search/:query", c.searchProjects);
+//user projects
+router.get("/user/:userId", c.getProjectsByUser);
+//current user projects
 router.get("/me", auth, async (req, res) => {
   const user = await User.findById(req.user.id).select("-password");
   res.json(user);
 });
-// GET projects by user (IMPORTANT: put BEFORE :id routes)
-router.get("/user/:userId", c.getProjectsByUser);
+
+
 
 
 // GET single project
-router.get("/search/:query", c.searchProjects);
 router.get("/:id", c.getProject);
 
 // CREATE project

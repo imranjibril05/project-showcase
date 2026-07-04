@@ -4,20 +4,24 @@ const safeUpload = require("../middleware/safeUpload");
 const auth = require("../middleware/authMiddleware");
 const User = require("../models/User");
 const c = require("../controllers/authController");
+const safeUploadSingle = require("../middleware/safeUpload");
+
 
 // ======================
 // REGISTER
 // ======================
 router.post(
   "/register",
-  safeUpload("profilePic"),
+  upload.single("profilePic"),
   c.register
 );
+
 
 // ======================
 // LOGIN
 // ======================
 router.post("/login", c.login);
+router.post("/google-login", c.googleLogin);
 
 // ======================
 // GET CURRENT USER (FIX)

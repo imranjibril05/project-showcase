@@ -1,41 +1,157 @@
+
 <!DOCTYPE html>
 <html>
 <head>
   <title>Create Project</title>
+
   <link rel="stylesheet" href="/css/style.css">
+
+  <link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
 </head>
-<body>
 
-<a href="/">← Back</a>
+<body class="create-page">
 
-<h2>Create Project</h2>
+  <!-- TOPBAR -->
 
-<input id="title" placeholder="Title">
-<select id="category">
+  <div class="create-topbar">
 
-  <option value="Website">Website</option>
+    <a href="/" class="back-btn">
+      <i class="fa-solid fa-arrow-left"></i>
+      Back
+    </a>
 
-  <option value="Design">Design</option>
+  </div>
 
-  <option value="Art">Art</option>
+  <!-- HERO -->
 
-  <option value="AI/ML">AI/ML</option>
+  <section class="create-hero">
 
-  <option value="Creative">Creative</option>
+    <div class="create-title-wrap">
 
-</select>
-<textarea id="description" placeholder="Description"></textarea>
-<input id="technologies" placeholder="Tech (comma separated)">
-<input id="link" placeholder="Project link">
+      <span class="create-badge">
+        BUILD SOMETHING
+      </span>
 
-<h3>Images (max 5)</h3>
-<div id="imageBox" class="image-grid"></div>
+      <h1>Create Project</h1>
 
-<button onclick="addImageSlot()">+ Add Image</button>
-<button onclick="createProject()">Submit</button>
-<script src="/js/utils.js"></script>
-<script src="/js/config.js"></script>
-<script src="/js/createProject.js"></script>
+      <p>
+        Share your ideas, designs, apps, AI tools,
+        artwork and innovations.
+      </p>
+
+    </div>
+
+  </section>
+
+  <!-- FORM -->
+
+  <section class="create-section">
+
+    <div class="create-card">
+
+      <div class="input-group">
+
+        <label>Project Title</label>
+
+        <input id="title" placeholder="Ex: AI Portfolio Builder">
+
+      </div>
+
+      <div class="input-group">
+
+        <label>Category</label>
+
+        <select id="category" class="category-select">
+
+          <option value="Website">Website</option>
+          <option value="Design">Design</option>
+          <option value="Art">Art</option>
+          <option value="AI/ML">AI/ML</option>
+          <option value="Creative">Creative</option>
+
+        </select>
+
+      </div>
+
+      <div class="input-group">
+
+        <label>Description</label>
+
+        <textarea
+          id="description"
+          placeholder="Describe your project..."
+        ></textarea>
+
+      </div>
+
+      <div class="input-group">
+
+        <label>Technologies</label>
+
+        <input
+          id="technologies"
+          placeholder="HTML, CSS, JS, Node.js..."
+        >
+
+      </div>
+
+      <div class="input-group">
+
+        <label>Project Link</label>
+
+        <input
+          id="link"
+          placeholder="https://yourproject.com"
+        >
+
+      </div>
+
+      <!-- IMAGES -->
+
+      <div class="upload-section">
+
+        <div class="upload-header">
+
+          <h3>Project Images</h3>
+
+          <span>Maximum 5 images</span>
+
+        </div>
+
+        <div class="upload-area">
+
+  <div class="upload-top">
+   
+   
+  </div>
+
+  <div id="imageBox" class="image-grid"></div>
+
+</div>
+
+      </div>
+
+      <!-- SUBMIT -->
+
+      <button
+      id="createBtn" 
+        class="submit-btn"
+        onclick="createProject()"
+      >
+        Publish Project
+      </button>
+
+    </div>
+
+  </section>
+
+  <script src="/js/utils.js"></script>
+  <script src="/js/config.js"></script>
+  <script src="/js/createProject.js"></script>
+    <script src="/js/toast.js"></script>
+  <div id="toast-container"></div>
 
 </body>
 </html>

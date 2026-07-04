@@ -1,4 +1,48 @@
+async function getCurrentUser() {
+  const token = localStorage.getItem("token");
+  if (!token) return null;
+
+  try {
+    const res = await fetch(API + "/auth/me", {
+      headers: {
+        Authorization: "Bearer " + token
+      }
+    });
+
+    if (!res.ok) return null;
+
+    return await res.json();
+  } catch (err) {
+    console.error(err);
+    return null;
+  }
+}
+function getUserIdFromToken() {
+  const token = localStorage.getItem("token");
+  if (!token) return null;
+
+  try {
+    const payload = JSON.parse(atob(token.split(".")[1]));
+    return payload.id;
+  } catch (err) {
+    return null;
+  }
+}
+function isAdmin() {
+  const token = localStorage.getItem("token");
+  if (!token) return false;
+
+  try {
+    const payload = JSON.parse(atob(token.split(".")[1]));
+    return payload.role === "admin";
+  } catch {
+    return false;
+  }
+}
+
+
 // ======================
+
 // IMAGE HANDLING
 // ======================
 function getImageUrl(img) {
@@ -74,7 +118,7 @@ async function getCurrentUser() {
 }
 function logout() {
   localStorage.removeItem("token");
-  window.location = "/login.html";
+  window.location = "/";
 }
 
 window.logout = logout;

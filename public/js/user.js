@@ -29,35 +29,51 @@ function renderProjects(projects) {
   const container = document.getElementById("projects");
 
   container.innerHTML = projects.map(p => `
-    <div class="projectCard">
+    <div class="project-card projectCard">
 
-      <div onclick="openProject('${p._id}')">
+      <div class="project-image" onclick="openProject('${p._id}')">
+
         ${
           p.images?.length
-            ? `<img src="${getImageUrl(p.images[0])}">`
-            : `<div>No Image</div>`
+            ? `<img src="${getImageUrl(p.images[0])}" alt="${p.title}">`
+            : `<div style="color:white;padding:20px;">No Image</div>`
         }
+
+        <div class="category-tag">
+          ${p.category || "Creative"}
+        </div>
+
       </div>
 
-      <h3>${p.title}</h3>
-      <p>${p.description}</p>
+      <div class="project-content">
 
-      <div class="userInfo" onclick="openUser('${p.user?._id}')">
+        <h3>${p.title}</h3>
 
-        <img
-          class="avatarSmall"
-          src="${p.user?.profilePic || 'https://i.imgur.com/HeIi0wU.png'}"
-        >
+        <p>${p.description}</p>
 
-        <span>
-          ${p.user?.name || "Unknown"}
-        </span>
+        <div class="project-footer">
+
+          <div class="project-author" onclick="openUser('${p.user?._id}')">
+
+            <div class="author-avatar">
+              <img
+                src="${p.user?.profilePic || 'https://i.imgur.com/HeIi0wU.png'}"
+                alt="${p.user?.name}"
+              >
+            </div>
+
+            <span>${p.user?.name || "Unknown"}</span>
+
+          </div>
+
+        </div>
 
       </div>
 
     </div>
   `).join("");
-}
+}  
+
 
 // ======================
 // HELPERS
@@ -75,3 +91,4 @@ function getImageUrl(img) {
   if (typeof img === "string" && img.startsWith("http")) return img;
   return "http://localhost:5000/uploads/" + img;
 }
+      

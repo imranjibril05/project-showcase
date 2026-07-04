@@ -5,8 +5,7 @@ const User = require("../models/User");
 exports.getProjects = async (req, res, next) => {
   try {
     const page = Number(req.query.page) || 1;
-    const limit = 10;
-
+    const limit = Number(req.query.limit) || 6;
     const projects = await Project.find()
       .populate("user", "name profilePic ")
       .sort({ createdAt: -1 })
@@ -19,6 +18,7 @@ exports.getProjects = async (req, res, next) => {
     next(err);
   }
 };
+
 exports.getProjectsByUser = async (req, res, next) => {
   try {
     const page = Number(req.query.page) || 1;
@@ -36,6 +36,7 @@ exports.getProjectsByUser = async (req, res, next) => {
     next(err);
   }
 };
+
 
 
 // GET ONE
@@ -62,7 +63,7 @@ exports.createProject = async (req, res) => {
       category: req.body.category,
       technologies: req.body.technologies?.split(",") || [],
       link: req.body.link,
-      images, // ALWAYS ARRAY OF STRINGS
+      images, 
       user: req.user.id
     });
 
@@ -72,21 +73,20 @@ exports.createProject = async (req, res) => {
   }
 };
 //catagories
-exports.getProjectsByCategory = async (req, res, next) => {
+exports.getProjectsByCategory = async (req, res) => {
   try {
+    const category = req.query.category;
 
-    const projects = await Project.find({
-      category: req.params.category
-    })
-    .populate("user", "name profilePic")
-    .sort({ createdAt: -1 });
+   const projects = await Project.find({
+  category: { $regex: new RegExp(category, "i") }
+}).populate("user", "name profilePic");
 
     res.json(projects);
-
   } catch (err) {
-    next(err);
+    res.status(500).json({ message: err.message });
   }
 };
+
 //Update Project
 exports.updateProject = async (req, res) => {
   try {
@@ -219,6 +219,22 @@ exports.addComment = async (req, res, next) => {
   try {
     const project = await Project.findById(req.params.id);
 
+    if (!project) {
+      return res.status(404).json({ message: "Project not found" });
+    }
+
+    if (!project.comments) {
+      project.comments = [];
+    }
+
+    if (!req.user || !req.user.id) {
+      return res.status(401).json({ message: "Unauthorized" });
+    }
+
+    if (!req.body.text || req.body.text.trim() === "") {
+      return res.status(400).json({ message: "Comment cannot be empty" });
+    }
+
     const newComment = {
       text: req.body.text,
       user: req.user.id
@@ -228,9 +244,14 @@ exports.addComment = async (req, res, next) => {
 
     await project.save();
 
-    res.json(newComment);
+    res.json({
+      success: true,
+      comment: newComment
+    });
+
   } catch (err) {
-    next(err);
+    console.log("ADD COMMENT ERROR:", err);
+    res.status(500).json({ message: err.message });
   }
 };
 //Edit comment

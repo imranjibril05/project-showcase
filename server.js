@@ -8,7 +8,7 @@ const connectDB = require("./config/db");
 
 const app = express();
 app.use(express.static(path.join(__dirname, "public")));
-
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 // middleware
 app.use(cors());
 app.use(express.json());
@@ -21,8 +21,7 @@ app.use("/api/projects", require("./routes/projectRoutes"));
 async function start() {
   try {
     await connectDB();
-
-    app.listen(5000, () => {
+     app.listen(5000, () => {
       console.log("Server running on port 5000");
     });
 
@@ -30,5 +29,4 @@ async function start() {
     console.error(err);
   }
 }
-
 start();
