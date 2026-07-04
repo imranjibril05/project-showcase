@@ -1,3 +1,4 @@
+const BASE_URL = "https://project-showcase-fi39.onrender.com";
 (function () {
 
   if (window.location.pathname.includes("user.html")) {
@@ -54,8 +55,8 @@
         window.location.pathname.includes("index.html");
 
       const url = isHomePage
-        ? API + "/projects?page=1&limit=6"
-        : API + "/projects?page=" + page;
+        ? `${BASE_URL}/projects?page=1&limit=6`
+        : `${BASE_URL}/projects?page=${page}`;
 
       const res = await fetch(url);
       const projects = await res.json();
@@ -170,11 +171,11 @@
     window.location = "/project.html?id=" + id;
   }
 
-  function getImageUrl(img) {
-    if (!img) return "";
-    if (typeof img === "string" && img.startsWith("http")) return img;
-    return "http://localhost:5000/uploads/" + img;
-  }
+ function getImageUrl(img) {
+  if (!img) return "";
+  if (typeof img === "string" && img.startsWith("http")) return img;
+  return `${BASE_URL}/uploads/${img}`;
+}
 
   // ======================
   // DELETE
@@ -185,7 +186,7 @@
     const token = localStorage.getItem("token");
 
     try {
-      const res = await fetch(API + "/projects/" + id, {
+      const res = await fetch(`${BASE_URL}/projects/${id}`, {
         method: "DELETE",
         headers: {
           Authorization: "Bearer " + token
@@ -265,7 +266,7 @@
   }
 
   // FILTERED FETCH (IMPORTANT)
-  fetch(API + "/projects/category?category=" + category)
+  fetch(`${BASE_URL}/projects/category?category=${category}`)
     .then(res => res.json())
     .then(data => {
       displayProjects(data, false);
