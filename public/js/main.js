@@ -2,6 +2,9 @@
 // SAFE GLOBAL STATE
 // ======================
 import { API } from "./config.js";
+import { getCurrentUser } from "./utils.js";
+import { showToast } from "./toast.js";
+import { projects, CLUBS, INITIAL_EVENTS, INNOVATORS } from "./data.js";
 
 let currentCategory = "All";
 
