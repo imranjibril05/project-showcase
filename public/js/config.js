@@ -1,1 +1,1 @@
-const API = "https://project-showcase-fi39.onrender.com";
+const API = "https://project-showcase-fi39.onrender.com/api";
