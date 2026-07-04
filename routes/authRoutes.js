@@ -10,11 +10,13 @@ const safeUploadSingle = require("../middleware/safeUpload");
 // ======================
 // REGISTER
 // ======================
-router.post(
+/*
+  router.post(
   "/register",
   upload.single("profilePic"),
-  c.register
+   c.register
 );
+*/
 
 
 // ======================

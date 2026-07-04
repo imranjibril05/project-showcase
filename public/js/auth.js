@@ -1,4 +1,4 @@
-const API_URL = API + "/auth";
+const API_URL = API + "/api/auth";
 const GOOGLE_CLIENT_ID = "569048598863-jp2rtuf68ujtm4pgkaejt9f77gir2ums.apps.googleusercontent.com";
 
 // ======================
@@ -11,7 +11,7 @@ function openRegisterModal() {
 
 function openLoginModal() {
   document.getElementById("loginModal").style.display = "flex";
-}
+} 
 
 function closeAuthModals() {
   document.getElementById("registerModal").style.display = "none";
@@ -169,7 +169,7 @@ async function handleGoogleLogin(response) {
 
   try {
 
-    const res = await fetch(API_URL + "/google-login", {
+    const res = await fetch(`${API_URL}/google-login`, {
 
       method: "POST",
 
