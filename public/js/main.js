@@ -7,7 +7,7 @@ import {
   logout
 } from "./utils.js";
 import { showToast } from "./toast.js";
-import { projects, CLUBS, INITIAL_EVENTS, INNOVATORS } from "./data.js";
+
 
 let currentCategory = "All";
 
@@ -59,7 +59,7 @@ async function initUser() {
 // PROFILE MENU (FIXED)
 // ======================
 function toggleProfileMenu() {
-  
+
   const menu = document.getElementById("profileMenu");
   if (!menu) return;
 
@@ -272,59 +272,10 @@ async function likeProjectUI(e, id, btn) {
     showToast("Error", "error");
   }
 }
- window.likeProjectUI = likeProjectUI;
-
-
- function renderHomeSections() {
-  const clubs = document.getElementById("d");
-  const events = document.getElementById("events-list");
-  const members = document.getElementById("innovators-grid");
-
-  if (clubs) {
-    clubs.innerHTML = CLUBS.map(c => `
-      <div class="club-card">
-
-          <a 
-      href="${c.telegram}"
-      target="_blank"
-      class="club-link"
-    >
-      <i class="fa-solid fa-arrow-up-right-from-square"></i>
-    </a>
+ 
 
 
 
-
-        <img src="${c.image}">
-        <h3>${c.name}</h3>
-        <p>${c.description}</p>
-      </div>
-    `).join("");
-  }
-
-  if (events) {
-    events.innerHTML = INITIAL_EVENTS.map(e => `
-      <div class="event-card">
-        <div class="event-date">
-          <span>${e.date}</span>
-          <span>${e.month}</span>
-        </div>
-        <h3>${e.title}</h3>
-        <p>${e.description}</p>
-      </div>
-    `).join("");
-  }
-
-  if (members) {
-    members.innerHTML = INNOVATORS.map(m => `
-      <div class="member-card">
-        <img src="${m.avatar}">
-        <h3>${m.name}</h3>
-        <p>${m.role}</p>
-      </div>
-    `).join("");
-  }
-}
 
 
 // ======================
@@ -342,7 +293,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   setupSearch();
   setupProfileOutsideClick();
   setupReveal();
-  renderHomeSections();
+  
 
   
   
@@ -353,5 +304,6 @@ function goToAllProjects() {
 
 window.goToAllProjects = goToAllProjects;
 window.renderProjects = renderProjects;
+window.likeProjectUI = likeProjectUI;
 window.logout = logout;
  

@@ -1,4 +1,4 @@
-const INITIAL_EVENTS = [
+/*const INITIAL_EVENTS = [
   {
     id: 'e1',
     title: 'Innovation Summit 2026',
@@ -74,4 +74,4 @@ const INNOVATORS = [
     avatar: 'https://i.pravatar.cc/300?u=james',
     socials: { telegram: '#', linkedin: '#', instagram: '#', github: '#' }
   }
-];
+]; */

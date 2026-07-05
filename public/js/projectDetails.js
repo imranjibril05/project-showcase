@@ -200,6 +200,7 @@ async function addComment() {
   input.value = "";
   loadProject();
 }
+window.addComment = addComment;
 
 async function deleteComment(commentId) {
   await fetch(`${API}/projects/${id}/comment/${commentId}`, {
@@ -211,6 +212,7 @@ async function deleteComment(commentId) {
 
   loadProject();
 }
+window.deleteComment = deleteComment;
 
 async function editComment(commentId, oldText) {
   const newText = prompt("Edit:", oldText);
@@ -227,5 +229,6 @@ async function editComment(commentId, oldText) {
 
   loadProject();
 }
+window.editComment = editComment;
 
 loadProject();
