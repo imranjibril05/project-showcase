@@ -1,4 +1,6 @@
 import { API } from "./config.js";
+import { getImageUrl, isAdmin } from "./utils.js";
+import { showToast } from "./toast.js";
 const userId = new URLSearchParams(window.location.search).get("id");
 
 if (!userId) {
@@ -87,9 +89,4 @@ function openProject(id) {
   window.location = "/project.html?id=" + id;
 }
 
-function getImageUrl(img) {
-  if (!img) return "";
-  if (typeof img === "string" && img.startsWith("http")) return img;
-  return `${BASE_URL}/uploads/${img}`;
-}
-      
+    

@@ -15,7 +15,7 @@ const ProjectSchema = new mongoose.Schema({
   description: { type: String, required: true },
   category: {
   type: String,
-  enum: ["all", "Website", "Design", "Art", "AI", "Creative"]
+  enum: ["all", "Website", "Design", "Art", "AI/ML", "Creative"]
 },
   technologies: { type: [String], required: true },
 

@@ -1,29 +1,35 @@
-function showToast(message,type="info"){
+// toast.js
 
-    const container=document.getElementById("toast-container");
+export function showToast(message, type = "info") {
 
-    const toast=document.createElement("div");
+  const container = document.getElementById("toast-container");
 
-    toast.className=`toast ${type}`;
+  if (!container) {
+    console.warn("Toast container not found.");
+    return;
+  }
 
-    toast.textContent=message;
+  const toast = document.createElement("div");
 
-    container.appendChild(toast);
+  toast.className = `toast ${type}`;
+  toast.textContent = message;
 
-    requestAnimationFrame(()=>{
-        toast.classList.add("show");
-    });
+  container.appendChild(toast);
 
-    setTimeout(()=>{
+  requestAnimationFrame(() => {
+    toast.classList.add("show");
+  });
 
-        toast.classList.remove("show");
+  setTimeout(() => {
 
-        setTimeout(()=>{
-            toast.remove();
-        },350);
+    toast.classList.remove("show");
 
-    },3000);
+    setTimeout(() => {
+      toast.remove();
+    }, 300);
 
+  }, 3000);
 }
 
-window.showToast=showToast;
+// keep global for onclick handlers or older code
+window.showToast = showToast;

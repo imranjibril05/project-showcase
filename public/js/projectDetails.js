@@ -1,4 +1,7 @@
 import { API } from "./config.js";
+import { getImageUrl, isAdmin } from "./utils.js";
+import { showToast } from "./toast.js";
+
 const id = new URLSearchParams(window.location.search).get("id");
 let currentImages = [];
 let currentIndex = 0;

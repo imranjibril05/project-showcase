@@ -2,17 +2,14 @@
 // SAFE GLOBAL STATE
 // ======================
 import { API } from "./config.js";
-import { getCurrentUser } from "./utils.js";
+import {
+  getCurrentUser,
+  logout
+} from "./utils.js";
 import { showToast } from "./toast.js";
 import { projects, CLUBS, INITIAL_EVENTS, INNOVATORS } from "./data.js";
 
 let currentCategory = "All";
-
-
-
-
-
-
 
 // ======================
 // USER INIT
@@ -45,7 +42,7 @@ async function initUser() {
 
     if (avatar) {
       avatar.style.display = "block";
-      avatar.src = user.profilePic || "/images/default-avatar.png";
+      avatar.src = user.profilePic || "https://i.imgur.com/HeIi0wU.png";
     }
 
     if (userName) userName.innerText = user.name;
@@ -98,7 +95,7 @@ function setupProfileOutsideClick() {
 // ======================
 // MOBILE MENU (FIXED)
 // ======================
-function setupMobileMenu() {
+function setupMobileMenu() {t
   const toggle = document.getElementById("menu-toggle");
   if (!toggle) return;
 
@@ -329,29 +326,15 @@ async function likeProjectUI(e, id, btn) {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // ======================
 // INIT ALL
 // ======================
 document.addEventListener("DOMContentLoaded", async () => {
   await initUser();
 
-  if (typeof INITIAL_PROJECTS !== "undefined") {
+  if (projects?.length) {
     renderProjects();
-  }
+}
 
   setupNavbar();
   setupMobileMenu();
@@ -368,4 +351,6 @@ function goToAllProjects() {
 }
 
 window.goToAllProjects = goToAllProjects;
+window.renderProjects = renderProjects;
+window.logout = logout;
  

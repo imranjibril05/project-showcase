@@ -1,4 +1,8 @@
 import { API } from "./config.js";
+import {
+    getCurrentUser,
+    getImageUrl
+} from "./utils.js";
 const token = localStorage.getItem("token");
 
 if (!token) {
@@ -21,22 +25,7 @@ function getUserIdFromToken() {
   }
 }
 
-function getImageUrl(img) {
 
-  if (!img) {
-    return "https://i.imgur.com/HeIi0wU.png";
-  }
-
-  if (typeof img === "string") {
-    return img;
-  }
-
-  if (typeof img === "object" && img.url) {
-    return img.url;
-  }
-
-  return "https://i.imgur.com/HeIi0wU.png";
-}
 
 // ======================
 // LOAD PROJECTS

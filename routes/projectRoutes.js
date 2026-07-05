@@ -16,11 +16,11 @@ router.get("/search/:query", c.searchProjects);
 //user projects
 router.get("/user/:userId", c.getProjectsByUser);
 //current user projects
-router.get("/me", auth, async (req, res) => {
+/*router.get("/me", auth, async (req, res) => {
   const user = await User.findById(req.user.id).select("-password");
   res.json(user);
 });
-
+*/
 
 
 

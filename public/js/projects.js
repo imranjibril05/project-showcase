@@ -1,4 +1,6 @@
 import { API } from "./config.js";
+import { getUserIdFromToken, isAdmin } from "./utils.js";
+import { showToast } from "./toast.js";
 (function () {
 
   if (window.location.pathname.includes("user.html")) {
@@ -171,11 +173,7 @@ import { API } from "./config.js";
     window.location = "/project.html?id=" + id;
   }
 
- function getImageUrl(img) {
-  if (!img) return "";
-  if (typeof img === "string" && img.startsWith("http")) return img;
-  return `${API}/uploads/${img}`;
-}
+ 
 
   // ======================
   // DELETE
