@@ -96,7 +96,7 @@ function setupProfileOutsideClick() {
 // ======================
 // MOBILE MENU (FIXED)
 // ======================
-function setupMobileMenu() {t
+function setupMobileMenu() {
   const toggle = document.getElementById("menu-toggle");
   if (!toggle) return;
 
@@ -221,6 +221,7 @@ function setupSearch() {
 // ======================
 // REVEAL FIX (IMPORTANT)
 // ======================
+
 function setupReveal() {
   const els = document.querySelectorAll(".reveal");
 
@@ -234,7 +235,6 @@ function setupReveal() {
 
   els.forEach(el => observer.observe(el));
 }
-
 // ======================
 // NAVBAR SCROLL
 // ======================
