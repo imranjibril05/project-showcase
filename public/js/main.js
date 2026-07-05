@@ -59,6 +59,7 @@ async function initUser() {
 // PROFILE MENU (FIXED)
 // ======================
 function toggleProfileMenu() {
+  
   const menu = document.getElementById("profileMenu");
   if (!menu) return;
 
