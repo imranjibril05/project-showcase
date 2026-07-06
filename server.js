@@ -10,10 +10,12 @@ const app = express();
 app.use(express.static(path.join(__dirname, "public")));
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 // middleware
+
 app.use(cors({
-  origin: "https://project-showcase-pi-beige.vercel.app",
+  origin: "https://origin-pi-beige.vercel.app",
   credentials: true
 }));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
